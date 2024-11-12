@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Flappy Bird Game</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            height: 100vh;
+            margin: 0;
+            background: url('fundo.png') no-repeat center center fixed; /* Caminho do arquivo de imagem */
+            background-size: cover;
+            overflow: hidden; /* Para garantir que nada saia da tela */
+            color: white; /* Cor da letra branca */
+        }
+        #gameCanvas {
+            background-color: #fff; /* Cor do fundo do canvas */
+            border: 1px solid #000;
+            margin-right: 20px; /* Espaço entre o canvas e a tabela */
+        }
+        .border-image {
+            position: absolute;
+            width: 140px; /* Aumentado em 40% de 100px para 140px */
+            height: 140px; /* Aumentado em 40% de 100px para 140px */
+            animation: spin 1s linear infinite, blink 0.5s step-start infinite;
+        }
+        .top-left {
+            top: 10px;
+            left: 10px;
+        }
+        .top-right {
+            top: 10px;
+            right: 10px;
+        }
+        .bottom-left {
+            bottom: 10px;
+            left: 10px;
+        }
+        .bottom-right {
+            bottom: 10px;
+            right: 10px;
+        }
+        .audio-player {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+        #rankingTable {
+            font-family: Arial, sans-serif;
+            border-collapse: collapse;
+            width: 300px;
+        }
+        #rankingTable td, #rankingTable th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        #rankingTable tr:nth-child(even) {background-color: rgba(255, 255, 255, 0.1);}
+        #rankingTable tr:hover {background-color: rgba(255, 255, 255, 0.2);}
+        #rankingTable th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: rgba(0, 0, 0, 0.5);
+            color: white;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="416" height="624"></canvas>
+    <div id="rankingContainer">
+        <h2>Top 10 Scores</h2>
+        <table id="rankingTable">
+            <thead>
+                <tr>
+                    <th>Rank</th>
+                    <th>Name</th>
+                    <th>Score</th>
+                </tr>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+    </div>
+    <img src="border-image.png" class="border-image top-left">
+    <img src="border-image.png" class="border-image top-right">
+    <img src="border-image.png" class="border-image bottom-left">
+    <img src="border-image.png" class="border-image bottom-right">
+    <audio id="backgroundMusic" class="audio-player" controls src="vini.mp3"></audio>
+    <script src="flappybird.js"></script>
+</body>
+</html>
